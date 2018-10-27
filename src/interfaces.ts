@@ -33,6 +33,19 @@ export interface IAssertionError {
 }
 
 /**
+ * Task run environment
+ */
+export interface IRunEnv {
+	document: {
+		filename: string;
+		fullPath: string;
+		name: string;
+	};
+	taskPath: string;
+	debug: boolean;
+}
+
+/**
  * Test command interface
  */
 export interface ITestCommand {
@@ -52,10 +65,10 @@ export interface ITestCommand {
 	validateExpect?: (args: any) => Array<IAssertionError>;
 
 	/** Command run handler */
-	run: (args: any, onReady: () => void) => Promise<any>;
+	run: (args: any, onReady: () => void, env: IRunEnv) => Promise<any>;
 
 	/** Command expect handler */
-	expect?: (args: any, result: any) => Array<IAssertionError>;
+	expect?: (args: any, result: any, env: IRunEnv) => Array<IAssertionError>;
 
 	/** Return user-friendly label of task based on arguments */
 	getLabel?: (runArgs: any, expectArgs: any) => string;
