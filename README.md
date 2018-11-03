@@ -14,9 +14,11 @@ The [Dexit](https://github.com/dexit-framework/dexit) aims to create a framework
 npm install --save @dexit/module-base
 ```
 
-**Use typings in your Dexit module:**
+### Typings
 
-```
+**Use typings in your Dexit module as follows:**
+
+```typescript
 import { ITestModule } from "@dexit/module-base"
 
 const MyModule: ITestModule = {
@@ -24,6 +26,29 @@ const MyModule: ITestModule = {
 };
 
 module.exports = MyModule;
+```
+
+### Module Test Runner
+
+If you want to test your module you can the `TestRunner` class.
+
+```typescript
+import { ModuleTestRunner, IRunEnv } from "@dexit/module-base"
+
+const runner = new ModuleTestRunner(myModuleDefinition);
+
+const env: IRunEnv = {
+    debug: false,
+    taskPath: "task",
+    document: {
+        name: "test",
+        filename: __filename,
+        fullPath: __filename
+    }
+};
+
+const runResult = await runner.run("command", args, env);
+const expectErrors = runner.expect("command", args, runResult, env)
 ```
 
 ## License Apache 2.0

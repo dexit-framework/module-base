@@ -114,7 +114,7 @@ describe("ModuleTestRunner", () => {
 
 	});
 
-	it("Should execute expect handler", async () => {
+	it("Should execute expect handler", () => {
 
 		const runner = new ModuleTestRunner(validModule);
 
@@ -126,7 +126,7 @@ describe("ModuleTestRunner", () => {
 			test: "test"
 		};
 
-		const res = await runner.expect("test", args, result, sampleEnv);
+		const res = runner.expect("test", args, result, sampleEnv);
 
 		expect(res).toEqual([]);
 

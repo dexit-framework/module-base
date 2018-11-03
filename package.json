@@ -1,6 +1,6 @@
 {
   "name": "@dexit/module-base",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Base utilities and typings for a Dexit module.",
   "main": "dist/src/index.js",
   "typings": "dist/src/index",
